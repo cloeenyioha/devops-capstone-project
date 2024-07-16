@@ -29,5 +29,7 @@ coverage==6.3.2
 httpie==3.2.1
 
 #Flask-Talisman
+flask-Talisman==1.1.0
 
 #Flask-Cors
+Flask-cors
