@@ -37,6 +37,7 @@ class TestAccountService(TestCase):
         init_db(app)
         talisman.force_https = False
 
+
     @classmethod
     def tearDownClass(cls):
         """Runs once before test suite"""
@@ -53,6 +54,7 @@ class TestAccountService(TestCase):
     def tearDown(self):
         """Runs once after each test case"""
         db.session.remove()
+
 
     ######################################################################
     #  H E L P E R   M E T H O D S
@@ -114,13 +116,12 @@ class TestAccountService(TestCase):
         self.assertEqual(new_account["phone_number"], account.phone_number)
         self.assertEqual(new_account["date_joined"], str(account.date_joined))
 
-    
+ 
     def test_bad_request(self):
         """It should not Create an Account when sending the wrong data"""
         response = self.client.post(BASE_URL, json={"name": "not enough data"})
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-    
     def test_unsupported_media_type(self):
         """It should not Create an Account when sending the wrong media type"""
         account = AccountFactory()
